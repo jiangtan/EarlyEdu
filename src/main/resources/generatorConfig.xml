@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+ <classPathEntry location="C:\06WORK_SOFT\jar\mysql-connector-java-5.1.42.jar"/>
+ <context id="DB2Tables" targetRuntime="MyBatis3">
+  <commentGenerator>
+   <property name="suppressDate" value="true"/>
+   <property name="suppressAllComments" value="true"/>
+  </commentGenerator>
+  <!--数据库链接地址账号密码-->
+  <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/earlyedu?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai" userId="root" password="root">
+  </jdbcConnection>
+  <javaTypeResolver>
+   <property name="forceBigDecimals" value="false"/>
+  </javaTypeResolver>
+  <!--生成Model类存放位置-->
+  <javaModelGenerator targetPackage="com.huahan.entity" targetProject="src/main/java">
+   <property name="enableSubPackages" value="true"/>
+   <!-- 从数据库返回的值被清理前后的空格 -->
+   <property name="trimStrings" value="false"/>
+  </javaModelGenerator>
+  <!--生成映射文件存放位置-->
+  <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+   <property name="enableSubPackages" value="true"/>
+  </sqlMapGenerator>
+  <!--生成Dao类存放位置-->
+  <!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码
+    type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象
+    type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
+    type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
+  -->
+  <javaClientGenerator type="XMLMAPPER" targetPackage="com.huahan.dao" targetProject="src/main/java">
+   <property name="enableSubPackages" value="true"/>
+  </javaClientGenerator>
+  
+  <!--生成对应表及类名-->
+  <table tableName="yd_movies" domainObjectName="Movie" enableCountByExample="false" enableUpdateByExample="false"
+    enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+   <columnOverride column="cover_photos" javaType="java.lang.String" jdbcType="VARCHAR" />
+   <columnOverride column="cover_photos_loc" javaType="java.lang.String" jdbcType="VARCHAR" />
+   <columnOverride column="pubdates" javaType="java.lang.String" jdbcType="VARCHAR" />
+   <columnOverride column="photographs_origin" javaType="java.lang.String" jdbcType="VARCHAR" />
+   <columnOverride column="photographs_origin_loc" javaType="java.lang.String" jdbcType="VARCHAR" />
+   <columnOverride column="languages" javaType="java.lang.String" jdbcType="VARCHAR" />
+   <columnOverride column="awards" javaType="java.lang.String" jdbcType="VARCHAR" />
+   <columnOverride column="summary" javaType="java.lang.String" jdbcType="VARCHAR" />
+  </table>
+<!--columnOverride使用这个标签是为了防止数据库字段类型为text时候，mybatis会生成xxxxWithBLOBs文件。-->
+
+ </context>
+</generatorConfiguration>

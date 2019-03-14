@@ -1,8 +1,11 @@
-package com.huahan.edu;
+package com.huahan;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import tk.mybatis.spring.annotation.MapperScan;
+
+@MapperScan(basePackages = { "com.huahan.mapper" })
 @SpringBootApplication
 public class EarlyEduApplication {
 
